@@ -17,30 +17,22 @@ const SearchBar: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Container>
-        <Input
-          title="Numbers and symbols not allowed"
-          type="search"
-          pattern={`[A-Za-z ]+`}
-          value={query}
-          placeholder="Example: Brazil"
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </Container>
+      <Input
+        title="Numbers and symbols not allowed"
+        type="search"
+        pattern={`[A-Za-z ]+`}
+        value={query}
+        placeholder="Example: Brazil"
+        onChange={(e) => setQuery(e.target.value)}
+      />
     </form>
   );
 };
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 0.5rem;
-  gap: 0.5rem;
-`;
-
 const Input = styled.input`
   border: 2px solid lightgray;
   padding: 0.2rem;
+  margin-top: 0.5rem;
   outline: none;
   color: #6366f1;
   :focus {

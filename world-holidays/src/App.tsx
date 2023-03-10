@@ -15,7 +15,7 @@ function App() {
 }
 
 const Container = styled.body`
-  padding: 1rem;
+  padding: 2rem;
   background-color: #f0f0f0;
   height: 100dvh;
 `;
