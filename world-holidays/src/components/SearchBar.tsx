@@ -21,7 +21,7 @@ const SearchBar: React.FC = () => {
         type="search"
         pattern={`[A-Za-z ]+`}
         value={query}
-        placeholder="Example: Brazil"
+        placeholder="Search country..."
         onChange={(e) => setQuery(e.target.value)}
       />
     </form>
