@@ -10,7 +10,6 @@ const SearchBar: React.FC = () => {
       setTimeout(() => {
         console.log(query);
       }, 1000);
-      setQuery("");
     }
     setQuery("");
   };
