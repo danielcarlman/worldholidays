@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useFetchHolidays from "../api/useFetchHolidays";
+import useFetchHolidays from "../hooks/useFetchHolidays";
 
 const HolidayList = () => {
   const { holidayData, isLoading } = useFetchHolidays();
