@@ -15,16 +15,18 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        title="Numbers and symbols not allowed"
-        type="search"
-        pattern={`[A-Za-z ]+`}
-        value={query}
-        placeholder="Search country..."
-        onChange={(e) => setQuery(e.target.value)}
-      />
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <Input
+          title="Numbers and symbols not allowed"
+          type="search"
+          pattern={`[A-Za-z ]+`}
+          value={query}
+          placeholder="Search country..."
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </form>
+    </>
   );
 };
 
