@@ -44,9 +44,4 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.button`
-  font-size: 1rem;
-  padding: 0.075rem 0.5rem;
-`;
-
 export default SearchBar;
