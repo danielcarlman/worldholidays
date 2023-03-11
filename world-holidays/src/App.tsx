@@ -21,7 +21,6 @@ function App() {
 
 const Container = styled.div`
   padding: 2rem;
-  background-color: #f0f0f0;
   height: 100dvh;
 `;
 
@@ -38,6 +37,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
   } 
 `;
 
