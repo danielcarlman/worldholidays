@@ -5,7 +5,7 @@ const useFetchHolidays = (options?: any) => {
     "holidays",
     async () => {
       const response = await fetch(
-        "https://calendarific.com/api/v2/holidays?&api_key=aa552e0b1463288068461e47805777cc6a80a1a0&country=BR&year=2023"
+        `https://calendarific.com/api/v2/holidays?&api_key=aa552e0b1463288068461e47805777cc6a80a1a0&country=BR&year=${new Date().getFullYear()}`
       );
       if (!response.ok) {
         throw new Error("Error");

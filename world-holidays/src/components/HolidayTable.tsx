@@ -12,13 +12,14 @@ const HolidayTable = () => {
     <div>
       {holidays?.map((holiday: any) => (
         <Table key={holiday.urlid}>
-          <tr>
-            <TableItem>{holiday.name}</TableItem>
-            <TableItem>{holiday.description}</TableItem>
-            <TableItem>{holiday.date.iso}</TableItem>
-            <TableItem>{holiday.primary_type}</TableItem>
-          </tr>
-          <br />
+          <tbody>
+            <tr>
+              <TableItem>{holiday.name}</TableItem>
+              <TableItem>{holiday.description}</TableItem>
+              <TableItem>{holiday.date.iso}</TableItem>
+              <TableItem>{holiday.primary_type}</TableItem>
+            </tr>
+          </tbody>
         </Table>
       ))}
     </div>
