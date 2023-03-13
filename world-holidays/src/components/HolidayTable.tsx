@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import useFetchHolidays from "../hooks/useFetchHolidays";
 
-const HolidayList = () => {
+const HolidayTable = () => {
   const { data: holidays, isLoading } = useFetchHolidays();
 
   if (isLoading) return <div>Loading...</div>;
@@ -37,4 +37,4 @@ const TableItem = styled.td`
   }
 `;
 
-export default HolidayList;
+export default HolidayTable;
