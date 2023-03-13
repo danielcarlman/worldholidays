@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import HolidayList from "./components/HolidayList";
+import HolidayTable from "./components/HolidayTable";
 import SearchBar from "./components/SearchBar";
 
 const queryClient = new QueryClient();
@@ -13,7 +13,7 @@ function App() {
       <Container>
         <Title>Holidays across the world</Title>
         <SearchBar />
-        <HolidayList />
+        <HolidayTable />
       </Container>
     </QueryClientProvider>
   );
