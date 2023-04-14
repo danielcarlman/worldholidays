@@ -20,7 +20,7 @@ function App() {
 }
 
 const Container = styled.div`
-  padding: 2rem;
+  padding: 0.5rem;
   height: 100dvh;
 `;
 

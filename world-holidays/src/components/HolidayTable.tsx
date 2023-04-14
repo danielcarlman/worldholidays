@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useFetchHolidays from "../hooks/useFetchHolidays";
+import useFetchHolidays from "../services/useFetchHolidays";
 
 const HolidayTable = () => {
   const { data: holidays, isLoading } = useFetchHolidays();
@@ -9,7 +9,7 @@ const HolidayTable = () => {
   if (holidays) console.log(holidays);
 
   return (
-    <div>
+    <TableContainer>
       {holidays?.map((holiday: any) => (
         <Table key={holiday.urlid}>
           <tbody>
@@ -22,9 +22,13 @@ const HolidayTable = () => {
           </tbody>
         </Table>
       ))}
-    </div>
+    </TableContainer>
   );
 };
+
+const TableContainer = styled.div`
+  width: auto;
+`;
 
 const Table = styled.table`
   list-style: none;
