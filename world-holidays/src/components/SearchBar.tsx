@@ -1,31 +1,21 @@
-import { useState } from "react";
 import styled from "styled-components";
 
-const SearchBar: React.FC = () => {
-  const [query, setQuery] = useState("");
+type SearchBarProps = {
+  value: string;
+  onChange: any;
+};
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (query.trim()) {
-      setTimeout(() => {
-        console.log(query);
-      }, 1000);
-    }
-    setQuery("");
-  };
-
+const SearchBar = ({ value, onChange }: SearchBarProps) => {
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <Input
-          title="Numbers and symbols not allowed"
-          type="search"
-          pattern={`[A-Za-z ]+`}
-          value={query}
-          placeholder="Search country..."
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </form>
+      <Input
+        aria-label="Numbers and symbols not allowed"
+        type="search"
+        pattern={`[A-Za-z ]+`}
+        value={value}
+        placeholder="Search country..."
+        onChange={(e) => onChange(e.target.value)}
+      />
     </>
   );
 };

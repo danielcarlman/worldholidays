@@ -1,17 +1,14 @@
 import { useQuery } from "react-query";
 
-const useFetchHolidays = (
-  holidayType: string,
-  countryCode: string,
-  options?: any
-) => {
+const useFetchCountries = (options?: any) => {
   const { data, isLoading, error } = useQuery(
-    ["holidays", countryCode],
+    ["countries"],
     async () => {
       const response = await fetch(
-        `https://calendarific.com/api/v2/holidays?&api_key=aa552e0b1463288068461e47805777cc6a80a1a0&type=${holidayType}&country=${countryCode}&year=${new Date().getFullYear()}`
+        `https://calendarific.com/api/v2/countries?&api_key=aa552e0b1463288068461e47805777cc6a80a1a0`
       );
       const data = await response.json();
+      console.log("data", data);
       if (data.meta?.error_detail) {
         throw new Error(data.meta.error_detail);
       }
@@ -20,11 +17,11 @@ const useFetchHolidays = (
     {
       staleTime: 1000 * 60 * 60 * 24,
       retry: false,
-      select: (data) => data.response.holidays,
+      select: (data) => data.response.countries,
       ...options,
     }
   );
   return { data, isLoading, error };
 };
 
-export default useFetchHolidays;
+export default useFetchCountries;

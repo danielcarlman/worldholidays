@@ -1,10 +1,21 @@
 import styled from "styled-components";
 import useFetchHolidays from "../services/useFetchHolidays";
 
-const HolidayTable = () => {
-  const { data: holidays, isLoading } = useFetchHolidays();
+type HolidayTableProps = {
+  holidayType: string;
+  countryCode: string;
+};
+
+const HolidayTable = ({ holidayType, countryCode }: HolidayTableProps) => {
+  const {
+    data: holidays,
+    isLoading,
+    error,
+  }: any = useFetchHolidays("national", countryCode);
 
   if (isLoading) return <div>Loading...</div>;
+  console.log("Error", error);
+  if (error) return <div>{error.message}</div>;
 
   if (holidays) console.log(holidays);
 

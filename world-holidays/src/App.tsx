@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import HolidayTable from "./components/HolidayTable";
 import SearchBar from "./components/SearchBar";
+import { useState } from "react";
+import useFetchCountries from "./services/useFetchCountries";
 
 const queryClient = new QueryClient();
 
@@ -10,12 +12,24 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
-      <Container>
-        <Title>Holidays across the world</Title>
-        <SearchBar />
-        <HolidayTable />
-      </Container>
+      <Home />
     </QueryClientProvider>
+  );
+}
+
+function Home() {
+  const countriesQuery = useFetchCountries();
+  console.log("countriesQuery", countriesQuery);
+  const [countryCode, setcountryCode] = useState("BR");
+  const handleOnChange = (searchValue: string) => {
+    setcountryCode(searchValue);
+  };
+  return (
+    <Container>
+      <Title>Holidays across the world</Title>
+      <SearchBar value={countryCode} onChange={handleOnChange} />
+      <HolidayTable countryCode={countryCode} holidayType="national" />
+    </Container>
   );
 }
 
