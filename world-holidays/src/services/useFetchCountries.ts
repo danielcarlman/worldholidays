@@ -1,5 +1,12 @@
 import { useQuery } from "react-query";
 
+type Country = {
+  name: string;
+  description: string;
+  date: { "iso-3166": string };
+  primary_type: string;
+};
+
 const useFetchCountries = (options?: any) => {
   const { data, isLoading, error } = useQuery(
     ["countries"],
@@ -16,7 +23,7 @@ const useFetchCountries = (options?: any) => {
     {
       staleTime: 1000 * 60 * 60 * 24,
       retry: false,
-      select: (data) => data.response.countries,
+      select: (data): Country[] => data.response.countries,
       ...options,
     }
   );
