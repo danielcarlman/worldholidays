@@ -11,18 +11,15 @@ const HolidayTable = ({ holidayType, countryCode }: HolidayTableProps) => {
     data: holidays,
     isLoading,
     error,
-  }: any = useFetchHolidays("national", countryCode);
+  }: any = useFetchHolidays(holidayType, countryCode);
 
   if (isLoading) return <div>Loading...</div>;
-  console.log("Error", error);
   if (error) return <div>{error.message}</div>;
-
-  if (holidays) console.log(holidays);
 
   return (
     <TableContainer>
-      {holidays?.map((holiday: any) => (
-        <Table key={holiday.urlid}>
+      {holidays?.map((holiday: any, id: number) => (
+        <Table key={holiday.urlid + id}>
           <tbody>
             <tr>
               <TableItem>{holiday.name}</TableItem>

@@ -1,19 +1,17 @@
 import styled from "styled-components";
 
 type SearchBarProps = {
-  value: string;
   onChange: any;
 };
 
-const SearchBar = ({ value, onChange }: SearchBarProps) => {
+const SearchBar = ({ onChange }: SearchBarProps) => {
   return (
     <>
       <Input
         aria-label="Numbers and symbols not allowed"
         type="search"
         pattern={`[A-Za-z ]+`}
-        value={value}
-        placeholder="Search country..."
+        placeholder="BR"
         onChange={(e) => onChange(e.target.value)}
       />
     </>

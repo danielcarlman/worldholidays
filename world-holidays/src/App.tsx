@@ -19,15 +19,26 @@ function App() {
 
 function Home() {
   const countriesQuery = useFetchCountries();
-  console.log("countriesQuery", countriesQuery);
   const [countryCode, setcountryCode] = useState("BR");
   const handleOnChange = (searchValue: string) => {
-    setcountryCode(searchValue);
+    const capitalizedSearchValue = searchValue
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+    const ISOCode = countriesQuery.data.find(
+      (query: { country_name: string }) =>
+        query.country_name === capitalizedSearchValue
+    );
+    if (ISOCode) {
+      console.log("Code", ISOCode);
+      setcountryCode(ISOCode && ISOCode["iso-3166"]);
+    }
   };
   return (
     <Container>
       <Title>Holidays across the world</Title>
-      <SearchBar value={countryCode} onChange={handleOnChange} />
+      <SearchBar onChange={handleOnChange} />
       <HolidayTable countryCode={countryCode} holidayType="national" />
     </Container>
   );
