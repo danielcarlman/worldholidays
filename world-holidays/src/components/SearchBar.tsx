@@ -11,7 +11,7 @@ const SearchBar = ({ onChange }: SearchBarProps) => {
         aria-label="Numbers and symbols not allowed"
         type="search"
         pattern={`[A-Za-z ]+`}
-        placeholder="BR"
+        placeholder="Brazil"
         onChange={(e) => onChange(e.target.value)}
       />
     </>
