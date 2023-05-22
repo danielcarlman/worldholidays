@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 const useFetchHolidays = (
   holidayType: string,
   countryCode: string,
-  options?: any
+  options?: object
 ) => {
   const { data, isLoading, error } = useQuery(
     ["holidays", countryCode],

@@ -1,16 +1,24 @@
 import { useQuery } from "react-query";
 
 type Country = {
-  name: string;
-  description: string;
-  date: { "iso-3166": string };
-  primary_type: string;
+  country_name: String;
+  "iso-3166": string;
+  supported_languages: number;
+  total_holidays: number;
+  uuid: string;
 };
 
-const useFetchCountries = (options?: any) => {
+type CountriesResponse = {
+  meta: { error_detail: string };
+  response: {
+    countries: Country[];
+  };
+};
+
+const useFetchCountries = (options?: object) => {
   const { data, isLoading, error } = useQuery(
     ["countries"],
-    async () => {
+    async (): Promise<CountriesResponse> => {
       const response = await fetch(
         `https://calendarific.com/api/v2/countries?&api_key=aa552e0b1463288068461e47805777cc6a80a1a0`
       );
@@ -23,7 +31,7 @@ const useFetchCountries = (options?: any) => {
     {
       staleTime: 1000 * 60 * 60 * 24,
       retry: false,
-      select: (data): Country[] => data.response.countries,
+      select: (data) => data.response.countries,
       ...options,
     }
   );

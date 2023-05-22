@@ -26,9 +26,8 @@ function Home() {
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
-    const ISOCode = countriesQuery.data.find(
-      (query: { country_name: string }) =>
-        query.country_name === standardizedSearchValue
+    const ISOCode = countriesQuery.data?.find(
+      (country) => country.country_name === standardizedSearchValue
     );
     if (ISOCode) {
       console.log("Code", ISOCode);
