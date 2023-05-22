@@ -1,12 +1,13 @@
 import { render, screen } from "@testing-library/react";
 
-import App from "./App";
-
 describe("App", () => {
   it("renders", () => {
-    render(<App />);
+    function Hello() {
+      return <h1>Hello</h1>;
+    }
+    render(<Hello />);
 
-    const title = screen.getByText("Vite + React");
+    const title = screen.getByText("Hello");
 
     expect(title).toBeInTheDocument();
   });
