@@ -15,6 +15,7 @@ const HolidayTable = ({ holidayType, countryCode }: HolidayTableProps) => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
+  if (!holidays.length) return <div>Welcome to World Holidays!</div>;
 
   return (
     <TableContainer>
