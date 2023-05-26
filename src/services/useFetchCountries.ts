@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import { getAPIKey } from "./getAPIKey";
 
 type Country = {
   country_name: String;
@@ -16,11 +17,12 @@ type CountriesResponse = {
 };
 
 const useFetchCountries = (options?: object) => {
+  const API_KEY = getAPIKey();
   const { data, isLoading, error } = useQuery(
     ["countries"],
     async (): Promise<CountriesResponse> => {
       const response = await fetch(
-        `https://calendarific.com/api/v2/countries?&api_key=aa552e0b1463288068461e47805777cc6a80a1a0`
+        `https://calendarific.com/api/v2/countries?&api_key=${API_KEY}`
       );
       const data = await response.json();
       if (data.meta?.error_detail) {

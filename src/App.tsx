@@ -3,12 +3,16 @@ import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import HolidayTable from "./components/HolidayTable";
 import SearchBar from "./components/SearchBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetchCountries from "./services/useFetchCountries";
 
 const queryClient = new QueryClient();
 
 function App() {
+  useEffect(() => {
+    localStorage.setItem("API_KEY", "aa552e0b1463288068461e47805777cc6a80a1a0");
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
