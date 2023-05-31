@@ -3,12 +3,16 @@ import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import HolidayTable from "./components/HolidayTable";
 import SearchBar from "./components/SearchBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetchCountries from "./services/useFetchCountries";
 
 const queryClient = new QueryClient();
 
 function App() {
+  useEffect(() => {
+    localStorage.setItem("API_KEY", import.meta.env.VITE_API_KEY);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
@@ -20,6 +24,7 @@ function App() {
 function Home() {
   const countriesQuery = useFetchCountries();
   const [countryCode, setcountryCode] = useState("");
+  const [queryError, setQueryError] = useState(false);
   const handleOnChange = (searchValue: string) => {
     const standardizedSearchValue = searchValue
       .toLowerCase()
@@ -30,15 +35,22 @@ function Home() {
       (country) => country.country_name === standardizedSearchValue
     );
     if (ISOCode) {
+      if (queryError) setQueryError(false);
       console.log("Code", ISOCode);
       setcountryCode(ISOCode["iso-3166"]);
+    } else {
+      setQueryError(true);
     }
   };
   return (
     <Container>
       <Title>Holidays across the world</Title>
       <SearchBar onChange={handleOnChange} />
-      <HolidayTable countryCode={countryCode} holidayType="national" />
+      <HolidayTable
+        countryCode={countryCode}
+        holidayType="national"
+        queryError={queryError}
+      />
     </Container>
   );
 }

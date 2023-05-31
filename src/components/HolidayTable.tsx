@@ -4,9 +4,14 @@ import useFetchHolidays from "../services/useFetchHolidays";
 type HolidayTableProps = {
   holidayType: string;
   countryCode: string;
+  queryError: boolean;
 };
 
-const HolidayTable = ({ holidayType, countryCode }: HolidayTableProps) => {
+const HolidayTable = ({
+  holidayType,
+  countryCode,
+  queryError,
+}: HolidayTableProps) => {
   const {
     data: holidays,
     isLoading,
@@ -16,6 +21,7 @@ const HolidayTable = ({ holidayType, countryCode }: HolidayTableProps) => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
   if (!holidays.length) return <div>Welcome to World Holidays!</div>;
+  if (queryError) return <div>No country was found. Try again!</div>;
 
   return (
     <TableContainer>
