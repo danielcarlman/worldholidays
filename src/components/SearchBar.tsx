@@ -12,7 +12,9 @@ const SearchBar = ({ onChange }: SearchBarProps) => {
         type="search"
         pattern={`[A-Za-z ]+`}
         placeholder="Example: Brazil"
-        onChange={(e) => onChange(e.target.value)}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === "Enter") onChange(e.currentTarget.value);
+        }}
       />
     </>
   );
