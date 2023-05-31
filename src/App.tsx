@@ -10,7 +10,7 @@ const queryClient = new QueryClient();
 
 function App() {
   useEffect(() => {
-    localStorage.setItem("API_KEY", "aa552e0b1463288068461e47805777cc6a80a1a0");
+    localStorage.setItem("API_KEY", import.meta.env.VITE_API_KEY);
   }, []);
 
   return (
