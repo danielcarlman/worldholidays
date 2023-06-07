@@ -67,6 +67,9 @@ const ToggleButton = styled(PopoverTrigger)`
 const Labels = styled.div`
   display: flex;
   flex-direction: column;
+  * + * {
+    margin-top: 0.5rem;
+  }
 `;
 
 const Label = styled.label`

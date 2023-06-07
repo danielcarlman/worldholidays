@@ -63,9 +63,6 @@ function Home() {
 const Container = styled.div`
   padding: 0.5rem;
   height: 100dvh;
-  * + * {
-    margin-top: 0.5rem;
-  }
 `;
 
 const Title = styled.h1`
