@@ -29,7 +29,7 @@ const Input = styled.input`
     border-color: #6366f1;
   }
   ::placeholder {
-    color: #333333;
+    color: #6366f1;
   }
 `;
 

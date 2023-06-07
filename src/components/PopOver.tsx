@@ -17,24 +17,24 @@ const PopOver = () => (
         <PopOverContent>
           <Labels>
             <Title>Filter by Status</Title>
-            <CheckBoxes>
-              <CheckBox>
-                <input type="checkbox" defaultChecked></input>
+            <List>
+              <CheckBoxes>
+                <CheckBox type="checkbox" defaultChecked></CheckBox>
                 <Label>National Holiday</Label>
-              </CheckBox>
-              <CheckBox>
-                <input type="checkbox" defaultChecked></input>
+              </CheckBoxes>
+              <CheckBoxes>
+                <CheckBox type="checkbox" defaultChecked></CheckBox>
                 <Label>Observance</Label>
-              </CheckBox>
-              <CheckBox>
-                <input type="checkbox" defaultChecked></input>
+              </CheckBoxes>
+              <CheckBoxes>
+                <CheckBox type="checkbox" defaultChecked></CheckBox>
                 <Label>Common local holiday</Label>
-              </CheckBox>
-              <CheckBox>
-                <input type="checkbox" defaultChecked></input>
+              </CheckBoxes>
+              <CheckBoxes>
+                <CheckBox type="checkbox" defaultChecked></CheckBox>
                 <Label>Season</Label>
-              </CheckBox>
-            </CheckBoxes>
+              </CheckBoxes>
+            </List>
           </Labels>
         </PopOverContent>
       </Popover>
@@ -53,7 +53,7 @@ const PopOverContainer = styled.div`
 `;
 
 const PopOverContent = styled(PopoverContent)`
-  background: rgb(204, 204, 204);
+  background-color: white;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -73,16 +73,37 @@ const Title = styled.h1`
   margin-bottom: 0.5rem;
 `;
 
-const CheckBoxes = styled.div`
+const List = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 `;
 
-const CheckBox = styled.div`
+const CheckBoxes = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+`;
+
+const CheckBox = styled.input`
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #6366f1;
+  border-radius: 3px;
+  outline: none;
+  transition: background-color 0.2s ease-in-out;
+
+  &:checked {
+    color: white;
+    background-color: #6366f1;
+  }
+
+  &:focus {
+    border-color: #6366f1;
+  }
 `;
 
 const ToggleButton = styled(PopoverTrigger)`
@@ -92,6 +113,17 @@ const ToggleButton = styled(PopoverTrigger)`
   aria-label: "Toggle Menu";
   width: 6rem;
   margin-top: 0;
+  background-color: white;
+  border: 2px solid lightgray;
+  padding: 0.2rem;
+  outline: none;
+  color: #6366f1;
+  :focus {
+    border-color: #6366f1;
+  }
+  ::placeholder {
+    color: #333333;
+  }
 `;
 
 const Labels = styled.div`
