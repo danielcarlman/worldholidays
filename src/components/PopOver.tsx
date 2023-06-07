@@ -48,7 +48,6 @@ const PopOverContent = styled(PopoverContent)`
 
 const ButtonLabel = styled.p`
   margin: 0;
-  margin-left: 0.25rem;
 `;
 
 const Title = styled.h1`
@@ -58,6 +57,7 @@ const Title = styled.h1`
 
 const ToggleButton = styled(PopoverTrigger)`
   display: flex;
+  gap: 0.25rem;
   align-items: center;
   aria-label: "Toggle Menu";
   width: 6rem;
