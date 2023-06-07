@@ -5,6 +5,7 @@ import HolidayTable from "./components/HolidayTable";
 import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from "react";
 import useFetchCountries from "./services/useFetchCountries";
+import PopOver from "./components/PopOver";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ function Home() {
   const countriesQuery = useFetchCountries();
   const [countryCode, setcountryCode] = useState("");
   const [queryError, setQueryError] = useState(false);
+
   const handleOnChange = (searchValue: string) => {
     const standardizedSearchValue = searchValue
       .toLowerCase()
@@ -45,7 +47,10 @@ function Home() {
   return (
     <Container>
       <Title>Holidays across the world</Title>
-      <SearchBar onChange={handleOnChange} />
+      <Bla>
+        <SearchBar onChange={handleOnChange} />
+        <PopOver />
+      </Bla>
       <HolidayTable
         countryCode={countryCode}
         holidayType="national"
@@ -58,10 +63,20 @@ function Home() {
 const Container = styled.div`
   padding: 0.5rem;
   height: 100dvh;
+  * + * {
+    margin-top: 0.5rem;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 1.5rem;
+`;
+
+const Bla = styled.div`
+  display: flex;
+  justify-direction: center;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const GlobalStyle = createGlobalStyle`

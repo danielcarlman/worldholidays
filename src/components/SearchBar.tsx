@@ -23,7 +23,6 @@ const SearchBar = ({ onChange }: SearchBarProps) => {
 const Input = styled.input`
   border: 2px solid lightgray;
   padding: 0.2rem;
-  margin-top: 0.5rem;
   outline: none;
   color: #6366f1;
   :focus {
