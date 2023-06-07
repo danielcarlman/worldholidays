@@ -17,9 +17,24 @@ const PopOver = () => (
         <PopOverContent>
           <Labels>
             <Title>Filter by Status</Title>
-            <Label>Observance</Label>
-            <Label>Common local holiday</Label>
-            <Label>Season</Label>
+            <CheckBoxes>
+              <CheckBox>
+                <input type="checkbox" defaultChecked></input>
+                <Label>National Holiday</Label>
+              </CheckBox>
+              <CheckBox>
+                <input type="checkbox" defaultChecked></input>
+                <Label>Observance</Label>
+              </CheckBox>
+              <CheckBox>
+                <input type="checkbox" defaultChecked></input>
+                <Label>Common local holiday</Label>
+              </CheckBox>
+              <CheckBox>
+                <input type="checkbox" defaultChecked></input>
+                <Label>Season</Label>
+              </CheckBox>
+            </CheckBoxes>
           </Labels>
         </PopOverContent>
       </Popover>
@@ -43,7 +58,9 @@ const PopOverContent = styled(PopoverContent)`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-left: 3.25rem;
+  margin-top: 0.5rem;
+  margin-left: 4.5rem;
+  border-radius: 0.25rem;
 `;
 
 const ButtonLabel = styled.p`
@@ -53,6 +70,19 @@ const ButtonLabel = styled.p`
 const Title = styled.h1`
   font-size: 1rem;
   font-weight: bold;
+  margin-bottom: 0.5rem;
+`;
+
+const CheckBoxes = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const CheckBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 const ToggleButton = styled(PopoverTrigger)`
@@ -67,9 +97,6 @@ const ToggleButton = styled(PopoverTrigger)`
 const Labels = styled.div`
   display: flex;
   flex-direction: column;
-  * + * {
-    margin-top: 0.5rem;
-  }
 `;
 
 const Label = styled.label`
