@@ -5,8 +5,33 @@ import {
   PopoverContent,
 } from "@radix-ui/react-popover";
 import styled from "styled-components";
+import RadioButton from "./RadioButton";
 
-const PopOver = () => (
+type PopOverProps = {
+  defaultRadioValue: string;
+  onRadioChange: (holidayType: string) => void;
+};
+
+const holidayTypes = [
+  {
+    label: "National",
+    id: "national",
+  },
+  {
+    label: "Local",
+    id: "local",
+  },
+  {
+    label: "Observance",
+    id: "observance",
+  },
+  {
+    label: "Religious",
+    id: "religious",
+  },
+];
+
+const PopOver = ({ defaultRadioValue, onRadioChange }: PopOverProps) => (
   <>
     <PopOverContainer>
       <Popover>
@@ -18,22 +43,18 @@ const PopOver = () => (
           <Labels>
             <Title>Filter by Status</Title>
             <List>
-              <CheckBoxes>
-                <CheckBox type="checkbox" defaultChecked></CheckBox>
-                <Label>National Holiday</Label>
-              </CheckBoxes>
-              <CheckBoxes>
-                <CheckBox type="checkbox" defaultChecked></CheckBox>
-                <Label>Observance</Label>
-              </CheckBoxes>
-              <CheckBoxes>
-                <CheckBox type="checkbox" defaultChecked></CheckBox>
-                <Label>Common local holiday</Label>
-              </CheckBoxes>
-              <CheckBoxes>
-                <CheckBox type="checkbox" defaultChecked></CheckBox>
-                <Label>Season</Label>
-              </CheckBoxes>
+              {holidayTypes.map((holidayType) => (
+                <RadioButton
+                  checked={defaultRadioValue === holidayType.id}
+                  key={holidayType.id}
+                  label={holidayType.label}
+                  id={holidayType.id}
+                  name="holidayType"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    onRadioChange(e.target.id);
+                  }}
+                />
+              ))}
             </List>
           </Labels>
         </PopOverContent>
@@ -85,27 +106,6 @@ const CheckBoxes = styled.div`
   gap: 0.5rem;
 `;
 
-const CheckBox = styled.input`
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #6366f1;
-  border-radius: 3px;
-  outline: none;
-  transition: background-color 0.2s ease-in-out;
-
-  &:checked {
-    color: white;
-    background-color: #6366f1;
-  }
-
-  &:focus {
-    border-color: #6366f1;
-  }
-`;
-
 const ToggleButton = styled(PopoverTrigger)`
   display: flex;
   gap: 0.25rem;
@@ -129,10 +129,6 @@ const ToggleButton = styled(PopoverTrigger)`
 const Labels = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const Label = styled.label`
-  font-size: 0.75rem;
 `;
 
 export default PopOver;

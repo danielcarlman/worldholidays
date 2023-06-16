@@ -25,35 +25,55 @@ const HolidayTable = ({
 
   return (
     <TableContainer>
-      {holidays?.map((holiday: any, id: number) => (
-        <Table key={holiday.urlid + id}>
-          <tbody>
-            <tr>
-              <TableItem>{holiday.name}</TableItem>
-              <TableItem>{holiday.description}</TableItem>
-              <TableItem>{holiday.date.iso}</TableItem>
-              <TableItem>{holiday.primary_type}</TableItem>
+      <Table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {holidays?.map((holiday: any, id: number) => (
+            <tr key={holiday.urlid + id}>
+              <td>{holiday.name}</td>
+              <td>{holiday.date.iso}</td>
+              <td>{holiday.description}</td>
+              <td>{holiday.primary_type}</td>
             </tr>
-          </tbody>
-        </Table>
-      ))}
+          ))}
+        </tbody>
+      </Table>
     </TableContainer>
   );
 };
 
 const TableContainer = styled.div`
   width: auto;
+  border-radius: 10px;
+  border: 1px solid #dedfdf;
+  overflow: hidden;
 `;
 
 const Table = styled.table`
-  list-style: none;
-  padding: 0.5rem;
-`;
-
-const TableItem = styled.td`
-  background: #fff;
-  :nth-child(even) {
-    background: #ccc;
+  width: 100%;
+  border-collapse: collapse;
+  thead > tr {
+    border-bottom: 1px solid #dedfdf;
+  }
+  th {
+    padding: 10px;
+    background-color: #ddd;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  th:nth-child(2) {
+    width: 50px;
+  }
+  tr:nth-child(even) {
+    background: #ddd;
   }
 `;
 

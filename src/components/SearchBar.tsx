@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type SearchBarProps = {
-  onChange: any;
+  onChange: (value: string) => void;
 };
 
 const SearchBar = ({ onChange }: SearchBarProps) => {

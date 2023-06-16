@@ -25,6 +25,7 @@ function App() {
 function Home() {
   const countriesQuery = useFetchCountries();
   const [countryCode, setcountryCode] = useState("");
+  const [holidayType, setHolidayType] = useState("national");
   const [queryError, setQueryError] = useState(false);
 
   const handleOnChange = (searchValue: string) => {
@@ -44,16 +45,24 @@ function Home() {
       setQueryError(true);
     }
   };
+
+  const handlePopOverChange = (holidayType: string) => {
+    setHolidayType(holidayType);
+  };
+
   return (
     <Container>
       <Title>Holidays across the world</Title>
       <Bla>
         <SearchBar onChange={handleOnChange} />
-        <PopOver />
+        <PopOver
+          defaultRadioValue={holidayType}
+          onRadioChange={handlePopOverChange}
+        />
       </Bla>
       <HolidayTable
         countryCode={countryCode}
-        holidayType="national"
+        holidayType={holidayType}
         queryError={queryError}
       />
     </Container>
