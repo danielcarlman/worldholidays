@@ -53,13 +53,13 @@ function Home() {
   return (
     <Container>
       <Title>Holidays across the world</Title>
-      <Bla>
+      <Filter>
         <SearchBar onChange={handleOnChange} />
         <PopOver
           defaultRadioValue={holidayType}
           onRadioChange={handlePopOverChange}
         />
-      </Bla>
+      </Filter>
       <HolidayTable
         countryCode={countryCode}
         holidayType={holidayType}
@@ -78,7 +78,7 @@ const Title = styled.h1`
   font-size: 1.5rem;
 `;
 
-const Bla = styled.div`
+const Filter = styled.div`
   display: flex;
   justify-direction: center;
   align-items: center;
