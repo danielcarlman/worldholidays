@@ -25,7 +25,7 @@ function App() {
 function Home() {
   const countriesQuery = useFetchCountries();
   const [countryCode, setcountryCode] = useState("");
-  const [holidayType, setHolidayType] = useState("national");
+  const [holidayType, setHolidayType] = useState("");
   const [queryError, setQueryError] = useState(false);
 
   const handleOnChange = (searchValue: string) => {
