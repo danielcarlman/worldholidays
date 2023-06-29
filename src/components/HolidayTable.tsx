@@ -7,6 +7,13 @@ type HolidayTableProps = {
   queryError: boolean;
 };
 
+const getShortDate = (date: Date) => {
+  return new Date(date).toLocaleDateString("us-EN", {
+    month: "short",
+    day: "numeric",
+  });
+};
+
 const HolidayTable = ({
   holidayType,
   countryCode,
@@ -38,7 +45,7 @@ const HolidayTable = ({
           {holidays?.map((holiday: any, id: number) => (
             <tr key={holiday.urlid + id}>
               <td>{holiday.name}</td>
-              <td>{holiday.date.iso}</td>
+              <td>{getShortDate(holiday.date.iso)}</td>
               <td>{holiday.description}</td>
               <td>{holiday.primary_type}</td>
             </tr>

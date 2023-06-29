@@ -70,12 +70,15 @@ function Home() {
 }
 
 const Container = styled.div`
+  margin: 0 auto;
   padding: 0.5rem;
+  max-width: 64rem;
   height: 100dvh;
 `;
 
 const Title = styled.h1`
   font-size: 1.5rem;
+  padding: 2rem 0 1rem;
 `;
 
 const Filter = styled.div`
@@ -83,6 +86,7 @@ const Filter = styled.div`
   justify-direction: center;
   align-items: center;
   gap: 1rem;
+  padding: 0.5rem 0 1rem;
 `;
 
 const GlobalStyle = createGlobalStyle`
