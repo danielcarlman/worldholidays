@@ -14,6 +14,10 @@ type PopOverProps = {
 
 const holidayTypes = [
   {
+    label: "Show All",
+    id: "",
+  },
+  {
     label: "National",
     id: "national",
   },
