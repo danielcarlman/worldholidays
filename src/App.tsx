@@ -5,7 +5,7 @@ import HolidayTable from "./components/HolidayTable";
 import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from "react";
 import useFetchCountries from "./services/useFetchCountries";
-import PopOver from "./components/PopOver";
+import { HolidayPopOverFilter } from "./components/HolidayPopOverFilter";
 
 const queryClient = new QueryClient();
 
@@ -55,7 +55,7 @@ function Home() {
       <Title>Holidays across the world</Title>
       <Filter>
         <SearchBar onChange={handleOnChange} />
-        <PopOver
+        <HolidayPopOverFilter
           defaultRadioValue={holidayType}
           onRadioChange={handlePopOverChange}
         />

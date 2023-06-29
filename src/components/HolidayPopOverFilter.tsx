@@ -31,7 +31,10 @@ const holidayTypes = [
   },
 ];
 
-const PopOver = ({ defaultRadioValue, onRadioChange }: PopOverProps) => (
+export const HolidayPopOverFilter = ({
+  defaultRadioValue,
+  onRadioChange,
+}: PopOverProps) => (
   <>
     <PopOverContainer>
       <Popover>
@@ -100,12 +103,6 @@ const List = styled.div`
   gap: 0.5rem;
 `;
 
-const CheckBoxes = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
 const ToggleButton = styled(PopoverTrigger)`
   display: flex;
   gap: 0.25rem;
@@ -130,5 +127,3 @@ const Labels = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-export default PopOver;
