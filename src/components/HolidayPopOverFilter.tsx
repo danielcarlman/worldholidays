@@ -50,17 +50,20 @@ export const HolidayPopOverFilter = ({
           <Labels>
             <Title>Filter by Status</Title>
             <List>
-              {holidayTypes.map((holidayType) => (
-                <RadioButton
-                  checked={defaultRadioValue === holidayType.id}
-                  key={holidayType.id}
-                  label={holidayType.label}
-                  id={holidayType.id}
-                  name="holidayType"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    onRadioChange(e.target.id);
-                  }}
-                />
+              {holidayTypes.map((holidayType, index) => (
+                <>
+                  <RadioButton
+                    checked={defaultRadioValue === holidayType.id}
+                    key={holidayType.id}
+                    label={holidayType.label}
+                    id={holidayType.id}
+                    name="holidayType"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      onRadioChange(e.target.id);
+                    }}
+                  />
+                  {index === 0 && <Separator />}
+                </>
               ))}
             </List>
           </Labels>
@@ -99,6 +102,12 @@ const Title = styled.h1`
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+`;
+
+const Separator = styled.hr`
+  border: none;
+  border-top: 1px solid rgb(99, 102, 241);
+  margin: 0.25rem 0;
 `;
 
 const List = styled.div`
