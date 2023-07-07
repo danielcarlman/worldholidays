@@ -17,15 +17,12 @@ const useFetchHolidays = (
       const data = await response.json();
       console.log("data", data);
       if (data.meta?.error_detail) {
-        if (type) {
-          throw new Error(data.meta.error_detail);
-        } else {
-          throw new Error("Welcome to World Holidays!");
-        }
+        throw new Error(data.meta.error_detail);
       }
       return data;
     },
     {
+      enabled: !!countryCode,
       staleTime: 1000 * 60 * 60 * 24,
       retry: false,
       select: (data) => data.response.holidays,
