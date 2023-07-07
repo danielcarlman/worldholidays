@@ -7,7 +7,13 @@ import { useState, useEffect } from "react";
 import useFetchCountries from "./services/useFetchCountries";
 import { HolidayPopOverFilter } from "./components/HolidayPopOverFilter";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   useEffect(() => {
