@@ -54,7 +54,7 @@ export const HolidayPopOverFilter = ({
                 <>
                   <RadioButton
                     checked={defaultRadioValue === holidayType.id}
-                    key={holidayType.id}
+                    key={holidayType.id + index}
                     label={holidayType.label}
                     id={holidayType.id}
                     name="holidayType"

@@ -64,13 +64,14 @@ const HolidayTable = ({
         </thead>
         <tbody>
           {holidays?.map((holiday: any, id: number) => {
+            console.log(holiday);
             return (
               <tr key={holiday.urlid + id}>
                 <td>{holiday.name}</td>
                 <td>{getShortDate(holiday.date.iso)}</td>
                 <td>{holiday.description}</td>
                 <td>
-                  <Pill backgroundColor={colorType[holiday.primary_type]}>
+                  <Pill backgroundColor={colorType[holiday.type[0]]}>
                     {holiday.primary_type}
                   </Pill>
                 </td>
