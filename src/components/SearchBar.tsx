@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type SearchBarProps = {
-  onChange: any;
+  onChange: (value: string) => void;
 };
 
 const SearchBar = ({ onChange }: SearchBarProps) => {
@@ -23,14 +23,13 @@ const SearchBar = ({ onChange }: SearchBarProps) => {
 const Input = styled.input`
   border: 2px solid lightgray;
   padding: 0.2rem;
-  margin-top: 0.5rem;
   outline: none;
   color: #6366f1;
   :focus {
     border-color: #6366f1;
   }
   ::placeholder {
-    color: #333333;
+    color: #6366f1;
   }
 `;
 

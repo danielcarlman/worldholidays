@@ -5,8 +5,15 @@ import HolidayTable from "./components/HolidayTable";
 import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from "react";
 import useFetchCountries from "./services/useFetchCountries";
+import { HolidayPopOverFilter } from "./components/HolidayPopOverFilter";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   useEffect(() => {
@@ -24,7 +31,9 @@ function App() {
 function Home() {
   const countriesQuery = useFetchCountries();
   const [countryCode, setcountryCode] = useState("");
+  const [holidayType, setHolidayType] = useState("");
   const [queryError, setQueryError] = useState(false);
+
   const handleOnChange = (searchValue: string) => {
     const standardizedSearchValue = searchValue
       .toLowerCase()
@@ -42,13 +51,24 @@ function Home() {
       setQueryError(true);
     }
   };
+
+  const handlePopOverChange = (holidayType: string) => {
+    setHolidayType(holidayType);
+  };
+
   return (
     <Container>
       <Title>Holidays across the world</Title>
-      <SearchBar onChange={handleOnChange} />
+      <Filter>
+        <SearchBar onChange={handleOnChange} />
+        <HolidayPopOverFilter
+          defaultRadioValue={holidayType}
+          onRadioChange={handlePopOverChange}
+        />
+      </Filter>
       <HolidayTable
         countryCode={countryCode}
-        holidayType="national"
+        holidayType={holidayType}
         queryError={queryError}
       />
     </Container>
@@ -56,12 +76,23 @@ function Home() {
 }
 
 const Container = styled.div`
+  margin: 0 auto;
   padding: 0.5rem;
+  max-width: 64rem;
   height: 100dvh;
 `;
 
 const Title = styled.h1`
   font-size: 1.5rem;
+  padding: 2rem 0 1rem;
+`;
+
+const Filter = styled.div`
+  display: flex;
+  justify-direction: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0 1rem;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -72,8 +103,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;    
   } 
 `;
 

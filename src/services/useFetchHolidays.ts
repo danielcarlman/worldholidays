@@ -7,11 +7,12 @@ const useFetchHolidays = (
   options?: object
 ) => {
   const API_KEY = getAPIKey();
+  const type = holidayType ? `&type=${holidayType}` : "";
   const { data, isLoading, error } = useQuery(
-    ["holidays", countryCode],
+    ["holidays", countryCode, holidayType],
     async () => {
       const response = await fetch(
-        `https://calendarific.com/api/v2/holidays?&api_key=${API_KEY}&type=${holidayType}&country=${countryCode}&year=${new Date().getFullYear()}`
+        `https://calendarific.com/api/v2/holidays?&api_key=${API_KEY}${type}&country=${countryCode}&year=${new Date().getFullYear()}`
       );
       const data = await response.json();
       console.log("data", data);
@@ -21,6 +22,7 @@ const useFetchHolidays = (
       return data;
     },
     {
+      enabled: !!countryCode,
       staleTime: 1000 * 60 * 60 * 24,
       retry: false,
       select: (data) => data.response.holidays,
