@@ -71,7 +71,7 @@ const HolidayTable = ({
                 <td>{getShortDate(holiday.date.iso)}</td>
                 <td>{holiday.description}</td>
                 <td>
-                  <Pill backgroundColor={colorType[holiday.type[0]]}>
+                  <Pill backgroundColor={colorType[holiday.primary_type]}>
                     {holiday.primary_type}
                   </Pill>
                 </td>

@@ -9,6 +9,7 @@ import RadioButton from "./RadioButton";
 
 type PopOverProps = {
   defaultRadioValue: string;
+  selected: string;
   onRadioChange: (holidayType: string) => void;
 };
 
@@ -37,6 +38,7 @@ const holidayTypes = [
 
 export const HolidayPopOverFilter = ({
   defaultRadioValue,
+  selected,
   onRadioChange,
 }: PopOverProps) => (
   <>
@@ -45,6 +47,12 @@ export const HolidayPopOverFilter = ({
         <ToggleButton>
           <CrossCircledIcon />
           <ButtonLabel>Type</ButtonLabel>
+          <CurrentOption>
+            |{" "}
+            {!selected
+              ? "Show all"
+              : selected.charAt(0).toUpperCase() + selected.slice(1)}
+          </CurrentOption>
         </ToggleButton>
         <PopOverContent>
           <Labels>
@@ -98,6 +106,10 @@ const ButtonLabel = styled.p`
   margin: 0;
 `;
 
+const CurrentOption = styled.p`
+  color: hsl(243.29deg 92.41% 69.02%);
+`;
+
 const Title = styled.h1`
   font-size: 1rem;
   font-weight: bold;
@@ -121,7 +133,7 @@ const ToggleButton = styled(PopoverTrigger)`
   gap: 0.25rem;
   align-items: center;
   aria-label: "Toggle Menu";
-  width: 6rem;
+  width: 9rem;
   margin-top: 0;
   background-color: white;
   border: 2px solid lightgray;
