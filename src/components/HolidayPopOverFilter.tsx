@@ -47,6 +47,7 @@ export const HolidayPopOverFilter = ({
         <ToggleButton>
           <CrossCircledIcon />
           <ButtonLabel>Type</ButtonLabel>
+
           <CurrentOption>
             |{" "}
             {!selected
