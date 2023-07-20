@@ -63,6 +63,7 @@ function Home() {
         <SearchBar onChange={handleOnChange} />
         <HolidayPopOverFilter
           defaultRadioValue={holidayType}
+          selected={holidayType}
           onRadioChange={handlePopOverChange}
         />
       </Filter>
