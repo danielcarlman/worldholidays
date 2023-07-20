@@ -90,7 +90,6 @@ const Title = styled.h1`
 
 const Filter = styled.div`
   display: flex;
-  justify-direction: center;
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 0 1rem;

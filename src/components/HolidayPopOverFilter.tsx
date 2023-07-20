@@ -1,4 +1,3 @@
-import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Popover,
   PopoverTrigger,
@@ -45,9 +44,7 @@ export const HolidayPopOverFilter = ({
     <PopOverContainer>
       <Popover>
         <ToggleButton>
-          <CrossCircledIcon />
           <ButtonLabel>Type</ButtonLabel>
-
           <CurrentOption>
             |{" "}
             {!selected
